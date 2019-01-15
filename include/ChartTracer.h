@@ -5,29 +5,63 @@
 
 class ChartTracer : Tracer {
 public:
-    ChartTracer(string title = "");
+    ChartTracer(string title = "") : Tracer("ChartTracer", title) {
+    }
 
-    ChartTracer set(json array1d);
+    ChartTracer set(json array1d) {
+        addTrace(key, "set", json::array({array1d}));
+        return *this;
+    }
 
-    ChartTracer set();
+    ChartTracer set() {
+        addTrace(key, "set", json::array({}));
+        return *this;
+    }
 
-    ChartTracer reset();
+    ChartTracer reset() {
+        addTrace(key, "reset", json::array({}));
+        return *this;
+    }
 
-    ChartTracer delay();
+    ChartTracer delay() {
+        addTrace(key, "delay", json::array({}));
+        return *this;
+    }
 
-    ChartTracer patch(json x, json v);
+    ChartTracer patch(json x, json v) {
+        addTrace(key, "patch", json::array({x, v}));
+        return *this;
+    }
 
-    ChartTracer depatch(json x);
+    ChartTracer depatch(json x) {
+        addTrace(key, "depatch", json::array({x}));
+        return *this;
+    }
 
-    ChartTracer select(json x);
+    ChartTracer select(json x) {
+        addTrace(key, "select", json::array({x}));
+        return *this;
+    }
 
-    ChartTracer select(json sx, json ex);
+    ChartTracer select(json sx, json ex) {
+        addTrace(key, "select", json::array({sx, ex}));
+        return *this;
+    }
 
-    ChartTracer deselect(json x);
+    ChartTracer deselect(json x) {
+        addTrace(key, "deselect", json::array({x}));
+        return *this;
+    }
 
-    ChartTracer deselect(json sx, json ex);
+    ChartTracer deselect(json sx, json ex) {
+        addTrace(key, "deselect", json::array({sx, ex}));
+        return *this;
+    }
 
-    ChartTracer chart(json chartTracer);
+    ChartTracer chart(json chartTracer) {
+        addTrace(key, "chart", json::array({chartTracer}));
+        return *this;
+    }
 };
 
 #endif

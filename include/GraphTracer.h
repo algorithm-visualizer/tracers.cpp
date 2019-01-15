@@ -5,99 +5,238 @@
 
 class GraphTracer : Tracer {
 public:
-    GraphTracer(string title = "");
+    GraphTracer(string title = "") : Tracer("GraphTracer", title) {
+    }
 
-    GraphTracer set(json array2d);
+    GraphTracer set(json array2d) {
+        addTrace(key, "set", json::array({array2d}));
+        return *this;
+    }
 
-    GraphTracer set();
+    GraphTracer set() {
+        addTrace(key, "set", json::array({}));
+        return *this;
+    }
 
-    GraphTracer reset();
+    GraphTracer reset() {
+        addTrace(key, "reset", json::array({}));
+        return *this;
+    }
 
-    GraphTracer delay();
+    GraphTracer delay() {
+        addTrace(key, "delay", json::array({}));
+        return *this;
+    }
 
-    GraphTracer directed(json isDirected);
+    GraphTracer directed(json isDirected) {
+        addTrace(key, "directed", json::array({isDirected}));
+        return *this;
+    }
 
-    GraphTracer directed();
+    GraphTracer directed() {
+        addTrace(key, "directed", json::array({}));
+        return *this;
+    }
 
-    GraphTracer weighted(json isWeighted);
+    GraphTracer weighted(json isWeighted) {
+        addTrace(key, "weighted", json::array({isWeighted}));
+        return *this;
+    }
 
-    GraphTracer weighted();
+    GraphTracer weighted() {
+        addTrace(key, "weighted", json::array({}));
+        return *this;
+    }
 
-    GraphTracer addNode(json id, json weight, json x, json y, json visitedCount, json selectedCount);
+    GraphTracer addNode(json id, json weight, json x, json y, json visitedCount, json selectedCount) {
+        addTrace(key, "addNode", json::array({id, weight, x, y, visitedCount, selectedCount}));
+        return *this;
+    }
 
-    GraphTracer addNode(json id, json weight, json x, json y, json visitedCount);
+    GraphTracer addNode(json id, json weight, json x, json y, json visitedCount) {
+        addTrace(key, "addNode", json::array({id, weight, x, y, visitedCount}));
+        return *this;
+    }
 
-    GraphTracer addNode(json id, json weight, json x, json y);
+    GraphTracer addNode(json id, json weight, json x, json y) {
+        addTrace(key, "addNode", json::array({id, weight, x, y}));
+        return *this;
+    }
 
-    GraphTracer addNode(json id, json weight, json x);
+    GraphTracer addNode(json id, json weight, json x) {
+        addTrace(key, "addNode", json::array({id, weight, x}));
+        return *this;
+    }
 
-    GraphTracer addNode(json id, json weight);
+    GraphTracer addNode(json id, json weight) {
+        addTrace(key, "addNode", json::array({id, weight}));
+        return *this;
+    }
 
-    GraphTracer addNode(json id);
+    GraphTracer addNode(json id) {
+        addTrace(key, "addNode", json::array({id}));
+        return *this;
+    }
 
-    GraphTracer updateNode(json id, json weight, json x, json y, json visitedCount, json selectedCount);
+    GraphTracer updateNode(json id, json weight, json x, json y, json visitedCount, json selectedCount) {
+        addTrace(key, "updateNode", json::array({id, weight, x, y, visitedCount, selectedCount}));
+        return *this;
+    }
 
-    GraphTracer updateNode(json id, json weight, json x, json y, json visitedCount);
+    GraphTracer updateNode(json id, json weight, json x, json y, json visitedCount) {
+        addTrace(key, "updateNode", json::array({id, weight, x, y, visitedCount}));
+        return *this;
+    }
 
-    GraphTracer updateNode(json id, json weight, json x, json y);
+    GraphTracer updateNode(json id, json weight, json x, json y) {
+        addTrace(key, "updateNode", json::array({id, weight, x, y}));
+        return *this;
+    }
 
-    GraphTracer updateNode(json id, json weight, json x);
+    GraphTracer updateNode(json id, json weight, json x) {
+        addTrace(key, "updateNode", json::array({id, weight, x}));
+        return *this;
+    }
 
-    GraphTracer updateNode(json id, json weight);
+    GraphTracer updateNode(json id, json weight) {
+        addTrace(key, "updateNode", json::array({id, weight}));
+        return *this;
+    }
 
-    GraphTracer updateNode(json id);
+    GraphTracer updateNode(json id) {
+        addTrace(key, "updateNode", json::array({id}));
+        return *this;
+    }
 
-    GraphTracer removeNode(json id);
+    GraphTracer removeNode(json id) {
+        addTrace(key, "removeNode", json::array({id}));
+        return *this;
+    }
 
-    GraphTracer addEdge(json source, json target, json weight, json visitedCount, json selectedCount);
+    GraphTracer addEdge(json source, json target, json weight, json visitedCount, json selectedCount) {
+        addTrace(key, "addEdge", json::array({source, target, weight, visitedCount, selectedCount}));
+        return *this;
+    }
 
-    GraphTracer addEdge(json source, json target, json weight, json visitedCount);
+    GraphTracer addEdge(json source, json target, json weight, json visitedCount) {
+        addTrace(key, "addEdge", json::array({source, target, weight, visitedCount}));
+        return *this;
+    }
 
-    GraphTracer addEdge(json source, json target, json weight);
+    GraphTracer addEdge(json source, json target, json weight) {
+        addTrace(key, "addEdge", json::array({source, target, weight}));
+        return *this;
+    }
 
-    GraphTracer addEdge(json source, json target);
+    GraphTracer addEdge(json source, json target) {
+        addTrace(key, "addEdge", json::array({source, target}));
+        return *this;
+    }
 
-    GraphTracer updateEdge(json source, json target, json weight, json visitedCount, json selectedCount);
+    GraphTracer updateEdge(json source, json target, json weight, json visitedCount, json selectedCount) {
+        addTrace(key, "updateEdge", json::array({source, target, weight, visitedCount, selectedCount}));
+        return *this;
+    }
 
-    GraphTracer updateEdge(json source, json target, json weight, json visitedCount);
+    GraphTracer updateEdge(json source, json target, json weight, json visitedCount) {
+        addTrace(key, "updateEdge", json::array({source, target, weight, visitedCount}));
+        return *this;
+    }
 
-    GraphTracer updateEdge(json source, json target, json weight);
+    GraphTracer updateEdge(json source, json target, json weight) {
+        addTrace(key, "updateEdge", json::array({source, target, weight}));
+        return *this;
+    }
 
-    GraphTracer updateEdge(json source, json target);
+    GraphTracer updateEdge(json source, json target) {
+        addTrace(key, "updateEdge", json::array({source, target}));
+        return *this;
+    }
 
-    GraphTracer removeEdge(json source, json target);
+    GraphTracer removeEdge(json source, json target) {
+        addTrace(key, "removeEdge", json::array({source, target}));
+        return *this;
+    }
 
-    GraphTracer layoutCircle();
+    GraphTracer layoutCircle() {
+        addTrace(key, "layoutCircle", json::array({}));
+        return *this;
+    }
 
-    GraphTracer layoutTree(json root, json sorted);
+    GraphTracer layoutTree(json root, json sorted) {
+        addTrace(key, "layoutTree", json::array({root, sorted}));
+        return *this;
+    }
 
-    GraphTracer layoutTree(json root);
+    GraphTracer layoutTree(json root) {
+        addTrace(key, "layoutTree", json::array({root}));
+        return *this;
+    }
 
-    GraphTracer layoutTree();
+    GraphTracer layoutTree() {
+        addTrace(key, "layoutTree", json::array({}));
+        return *this;
+    }
 
-    GraphTracer layoutRandom();
+    GraphTracer layoutRandom() {
+        addTrace(key, "layoutRandom", json::array({}));
+        return *this;
+    }
 
-    GraphTracer visit(json target, json source, json weight);
+    GraphTracer visit(json target, json source, json weight) {
+        addTrace(key, "visit", json::array({target, source, weight}));
+        return *this;
+    }
 
-    GraphTracer visit(json target, json source);
+    GraphTracer visit(json target, json source) {
+        addTrace(key, "visit", json::array({target, source}));
+        return *this;
+    }
 
-    GraphTracer visit(json target);
+    GraphTracer visit(json target) {
+        addTrace(key, "visit", json::array({target}));
+        return *this;
+    }
 
-    GraphTracer leave(json target, json source, json weight);
+    GraphTracer leave(json target, json source, json weight) {
+        addTrace(key, "leave", json::array({target, source, weight}));
+        return *this;
+    }
 
-    GraphTracer leave(json target, json source);
+    GraphTracer leave(json target, json source) {
+        addTrace(key, "leave", json::array({target, source}));
+        return *this;
+    }
 
-    GraphTracer leave(json target);
+    GraphTracer leave(json target) {
+        addTrace(key, "leave", json::array({target}));
+        return *this;
+    }
 
-    GraphTracer select(json target, json source);
+    GraphTracer select(json target, json source) {
+        addTrace(key, "select", json::array({target, source}));
+        return *this;
+    }
 
-    GraphTracer select(json target);
+    GraphTracer select(json target) {
+        addTrace(key, "select", json::array({target}));
+        return *this;
+    }
 
-    GraphTracer deselect(json target, json source);
+    GraphTracer deselect(json target, json source) {
+        addTrace(key, "deselect", json::array({target, source}));
+        return *this;
+    }
 
-    GraphTracer deselect(json target);
+    GraphTracer deselect(json target) {
+        addTrace(key, "deselect", json::array({target}));
+        return *this;
+    }
 
-    GraphTracer log(json logTracer);
+    GraphTracer log(json logTracer) {
+        addTrace(key, "log", json::array({logTracer}));
+        return *this;
+    }
 };
 
 #endif
