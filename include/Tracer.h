@@ -3,8 +3,10 @@
 
 #include <string>
 #include <fstream>
-#include <cstdlib>
 #include <nlohmann/json.hpp>
+
+#define MAX_TRACES 1000000
+#define MAX_TRACERS 100
 
 class Tracer {
 protected:
@@ -14,9 +16,6 @@ protected:
 private:
     static int tracerCount;
     static json traces;
-
-    static const long maxTraces;
-    static const long maxTracers;
 
     static string addTracer(string className, string title) {
         string key = std::to_string(tracerCount++) + "-" + className + "-" + title;
@@ -32,8 +31,8 @@ protected:
                                  {"method",    method},
                                  {"args",      args},
                          });
-        if (traces.size() > maxTraces) throw std::overflow_error("Traces Limit Exceeded");
-        if (tracerCount > maxTracers) throw std::overflow_error("Tracers Limit Exceeded");
+        if (traces.size() > MAX_TRACES) throw std::overflow_error("Traces Limit Exceeded");
+        if (tracerCount > MAX_TRACERS) throw std::overflow_error("Tracers Limit Exceeded");
     }
 
     string key;
@@ -53,9 +52,6 @@ public:
 
 int Tracer::tracerCount = 0;
 nlohmann::json Tracer::traces = json::array();
-
-const long Tracer::maxTraces = std::stol(getenv("MAX_TRACES"));
-const long Tracer::maxTracers = std::stol(getenv("MAX_TRACERS"));
 
 int init() {
     atexit(Tracer::onExit);
