@@ -41,7 +41,3 @@ int main() {
 ```
 
 Check out the [API reference](https://github.com/algorithm-visualizer/algorithm-visualizer/wiki) for more information.
-
-## Contributing
-
-Check out the [contributing guidelines](https://github.com/algorithm-visualizer/tracers.cpp/blob/master/CONTRIBUTING.md).
