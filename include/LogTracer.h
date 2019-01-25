@@ -10,37 +10,37 @@ public:
     }
 
     LogTracer set(json log) {
-        addTrace(key, "set", json::array({log}));
+        addTrace(key, "set", {log});
         return *this;
     }
 
     LogTracer set() {
-        addTrace(key, "set", json::array({}));
+        addTrace(key, "set", {});
         return *this;
     }
 
     LogTracer reset() {
-        addTrace(key, "reset", json::array({}));
+        addTrace(key, "reset", {});
         return *this;
     }
 
     LogTracer delay() {
-        addTrace(key, "delay", json::array({}));
+        addTrace(key, "delay", {});
         return *this;
     }
 
     LogTracer print(json message) {
-        addTrace(key, "print", json::array({message}));
+        addTrace(key, "print", {message});
         return *this;
     }
 
     LogTracer println(json message) {
-        addTrace(key, "println", json::array({message}));
+        addTrace(key, "println", {message});
         return *this;
     }
 
     LogTracer printf(string format, ...) {
-        json traceArgs = json::array({format});
+        arguments traceArgs = {format};
 
         va_list args;
         va_start(args, format);

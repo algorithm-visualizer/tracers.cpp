@@ -10,57 +10,57 @@ public:
     }
 
     Array1DTracer set(json array1d) {
-        addTrace(key, "set", json::array({array1d}));
+        addTrace(key, "set", {array1d});
         return *this;
     }
 
     Array1DTracer set() {
-        addTrace(key, "set", json::array({}));
+        addTrace(key, "set", {});
         return *this;
     }
 
     Array1DTracer reset() {
-        addTrace(key, "reset", json::array({}));
+        addTrace(key, "reset", {});
         return *this;
     }
 
     Array1DTracer delay() {
-        addTrace(key, "delay", json::array({}));
+        addTrace(key, "delay", {});
         return *this;
     }
 
     Array1DTracer patch(json x, json v) {
-        addTrace(key, "patch", json::array({x, v}));
+        addTrace(key, "patch", {x, v});
         return *this;
     }
 
     Array1DTracer depatch(json x) {
-        addTrace(key, "depatch", json::array({x}));
+        addTrace(key, "depatch", {x});
         return *this;
     }
 
     Array1DTracer select(json x) {
-        addTrace(key, "select", json::array({x}));
+        addTrace(key, "select", {x});
         return *this;
     }
 
     Array1DTracer select(json sx, json ex) {
-        addTrace(key, "select", json::array({sx, ex}));
+        addTrace(key, "select", {sx, ex});
         return *this;
     }
 
     Array1DTracer deselect(json x) {
-        addTrace(key, "deselect", json::array({x}));
+        addTrace(key, "deselect", {x});
         return *this;
     }
 
     Array1DTracer deselect(json sx, json ex) {
-        addTrace(key, "deselect", json::array({sx, ex}));
+        addTrace(key, "deselect", {sx, ex});
         return *this;
     }
 
     Array1DTracer chart(ChartTracer chartTracer) {
-        addTrace(key, "chart", json::array({chartTracer.key}));
+        addTrace(key, "chart", {chartTracer.key});
         return *this;
     }
 };

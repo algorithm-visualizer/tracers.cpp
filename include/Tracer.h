@@ -14,6 +14,7 @@ class Tracer {
 protected:
     using string = std::string;
     using json = nlohmann::json;
+    using arguments = std::vector<json>;
 
 private:
     static int tracerCount;
@@ -22,12 +23,12 @@ private:
     static string addTracer(string className, string title) {
         string key = std::to_string(tracerCount++) + "-" + className + "-" + title;
         string method = "construct";
-        addTrace(key, method, json::array({className, title}));
+        addTrace(key, method, {className, title});
         return key;
     }
 
 protected:
-    static void addTrace(string tracerKey, string method, json args) {
+    static void addTrace(string tracerKey, string method, arguments args) {
         traces.push_back({
                                  {"tracerKey", tracerKey},
                                  {"method",    method},
