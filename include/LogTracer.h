@@ -4,13 +4,13 @@
 #include <regex>
 #include "Tracer.h"
 
-class LogTracer : Tracer {
+class LogTracer : public Tracer {
 public:
     LogTracer(string title = "") : Tracer("LogTracer", title) {
     }
 
-    LogTracer set(json messages) {
-        addTrace(key, "set", json::array({messages}));
+    LogTracer set(json log) {
+        addTrace(key, "set", json::array({log}));
         return *this;
     }
 

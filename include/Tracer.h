@@ -37,14 +37,14 @@ protected:
         if (tracerCount > MAX_TRACERS) throw std::overflow_error("Tracers Limit Exceeded");
     }
 
-    string key;
-
     Tracer(string className, string title) {
         if (title.empty()) title = className;
         key = addTracer(className, title);
     }
 
 public:
+    string key;
+
     static size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string *data) {
         data->append((char *) ptr, size * nmemb);
         return size * nmemb;

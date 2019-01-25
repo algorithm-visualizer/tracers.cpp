@@ -2,8 +2,9 @@
 #define CPP_ARRAY1DTRACER_H
 
 #include "Tracer.h"
+#include "ChartTracer.h"
 
-class Array1DTracer : Tracer {
+class Array1DTracer : public Tracer {
 public:
     Array1DTracer(string title = "") : Tracer("Array1DTracer", title) {
     }
@@ -58,8 +59,8 @@ public:
         return *this;
     }
 
-    Array1DTracer chart(json chartTracer) {
-        addTrace(key, "chart", json::array({chartTracer}));
+    Array1DTracer chart(ChartTracer chartTracer) {
+        addTrace(key, "chart", json::array({chartTracer.key}));
         return *this;
     }
 };

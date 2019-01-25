@@ -3,7 +3,7 @@
 
 #include "Tracer.h"
 
-class Array2DTracer : Tracer {
+class Array2DTracer : public Tracer {
 public:
     Array2DTracer(string title = "") : Tracer("Array2DTracer", title) {
     }

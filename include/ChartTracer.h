@@ -3,7 +3,7 @@
 
 #include "Tracer.h"
 
-class ChartTracer : Tracer {
+class ChartTracer : public Tracer {
 public:
     ChartTracer(string title = "") : Tracer("ChartTracer", title) {
     }
@@ -58,8 +58,8 @@ public:
         return *this;
     }
 
-    ChartTracer chart(json chartTracer) {
-        addTrace(key, "chart", json::array({chartTracer}));
+    ChartTracer chart(ChartTracer chartTracer) {
+        addTrace(key, "chart", json::array({chartTracer.key}));
         return *this;
     }
 };

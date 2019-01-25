@@ -2,8 +2,9 @@
 #define CPP_GRAPHTRACER_H
 
 #include "Tracer.h"
+#include "LogTracer.h"
 
-class GraphTracer : Tracer {
+class GraphTracer : public Tracer {
 public:
     GraphTracer(string title = "") : Tracer("GraphTracer", title) {
     }
@@ -233,8 +234,8 @@ public:
         return *this;
     }
 
-    GraphTracer log(json logTracer) {
-        addTrace(key, "log", json::array({logTracer}));
+    GraphTracer log(LogTracer logTracer) {
+        addTrace(key, "log", json::array({logTracer.key}));
         return *this;
     }
 };
