@@ -2,6 +2,7 @@
 #define CPP_LOGTRACER_H
 
 #include <regex>
+#include <stdarg.h>
 #include "Tracer.h"
 
 class LogTracer : public Tracer {
