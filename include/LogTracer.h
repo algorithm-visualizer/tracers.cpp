@@ -29,7 +29,7 @@ public:
         va_start(args, format);
         string::const_iterator searchStart(format.cbegin());
         const std::regex exp(
-                R"((?:[^\x25]|^)(?:\x25{2})*\x25(?:([1-9]\d*)\$|\(([^)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-gijostTuvxX]))");
+                R"RAW((?:[^\x25]|^)(?:\x25{2})*\x25(?:([1-9]\d*)\$|\(([^)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-gijostTuvxX]))RAW");
         std::smatch match;
         while (std::regex_search(searchStart, format.cend(), match, exp)) {
             char specifier = match.str(8).at(0);
