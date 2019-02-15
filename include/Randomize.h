@@ -1,5 +1,5 @@
-#ifndef PROJECT_RANDOMIZE_H
-#define PROJECT_RANDOMIZE_H
+#ifndef CPP_RANDOMIZE_H
+#define CPP_RANDOMIZE_H
 
 #include <random>
 #include <algorithm>
@@ -11,9 +11,6 @@ namespace Randomize {
     template<class T>
     class Randomizer {
     public:
-        Randomizer() {
-        }
-
         virtual T create() = 0;
     };
 
@@ -68,7 +65,7 @@ namespace Randomize {
         string _letters;
 
     public:
-        String(int length = 16, string letters = "abcdefghijklmnopqrstuvwxyz") {
+        String(int length = 16, const string &letters = "abcdefghijklmnopqrstuvwxyz") {
             _length = length;
             _letters = letters;
         }
@@ -201,4 +198,4 @@ namespace Randomize {
     };
 }
 
-#endif //PROJECT_RANDOMIZE_H
+#endif

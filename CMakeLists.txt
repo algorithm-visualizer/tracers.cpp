@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(algorithm-visualizer VERSION 2.1.0)
+project(algorithm-visualizer VERSION 2.3.0)
 
 set(CMAKE_CXX_STANDARD 11)
 

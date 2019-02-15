@@ -6,47 +6,29 @@
 
 class LogTracer : public Tracer {
 public:
-    LogTracer(string title = "") : Tracer("LogTracer", title) {
+    LogTracer(const string &title = "", const string &className = "LogTracer") : Tracer(title, className) {
     }
 
-    LogTracer set(json log) {
-        addTrace(key, "set", {log});
-        return *this;
+    void set(const json &log) {
+        command("set", {log});
     }
 
-    LogTracer set() {
-        addTrace(key, "set", {});
-        return *this;
+    void print(const json &message) {
+        command("print", {message});
     }
 
-    LogTracer reset() {
-        addTrace(key, "reset", {});
-        return *this;
+    void println(const json &message) {
+        command("println", {message});
     }
 
-    LogTracer delay() {
-        addTrace(key, "delay", {});
-        return *this;
-    }
-
-    LogTracer print(json message) {
-        addTrace(key, "print", {message});
-        return *this;
-    }
-
-    LogTracer println(json message) {
-        addTrace(key, "println", {message});
-        return *this;
-    }
-
-    LogTracer printf(string format, ...) {
+    void printf(const string format, ...) {
         arguments traceArgs = {format};
 
         va_list args;
         va_start(args, format);
         string::const_iterator searchStart(format.cbegin());
         const std::regex exp(
-                "(?:[^\\x25]|^)(?:\\x25{2})*\\x25(?:([1-9]\\d*)\\$|\\(([^)]+)\\))?(\\+)?(0|'[^$])?(-)?(\\d+)?(?:\\.(\\d+))?([b-gijostTuvxX])");
+                R"((?:[^\x25]|^)(?:\x25{2})*\x25(?:([1-9]\d*)\$|\(([^)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-gijostTuvxX]))");
         std::smatch match;
         while (std::regex_search(searchStart, format.cend(), match, exp)) {
             char specifier = match.str(8).at(0);
@@ -81,8 +63,7 @@ public:
         }
         va_end(args);
 
-        addTrace(key, "printf", traceArgs);
-        return *this;
+        command("printf", traceArgs);
     }
 };
 

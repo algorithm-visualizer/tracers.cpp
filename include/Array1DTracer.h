@@ -1,67 +1,17 @@
 #ifndef CPP_ARRAY1DTRACER_H
 #define CPP_ARRAY1DTRACER_H
 
-#include "Tracer.h"
+#include "BaseArray1DTracer.h"
 #include "ChartTracer.h"
 
-class Array1DTracer : public Tracer {
+class Array1DTracer : public BaseArray1DTracer {
 public:
-    Array1DTracer(string title = "") : Tracer("Array1DTracer", title) {
+    Array1DTracer(const string &title = "", const string &className = "Array1DTracer") : BaseArray1DTracer(title,
+                                                                                                           className) {
     }
 
-    Array1DTracer set(json array1d) {
-        addTrace(key, "set", {array1d});
-        return *this;
-    }
-
-    Array1DTracer set() {
-        addTrace(key, "set", {});
-        return *this;
-    }
-
-    Array1DTracer reset() {
-        addTrace(key, "reset", {});
-        return *this;
-    }
-
-    Array1DTracer delay() {
-        addTrace(key, "delay", {});
-        return *this;
-    }
-
-    Array1DTracer patch(json x, json v) {
-        addTrace(key, "patch", {x, v});
-        return *this;
-    }
-
-    Array1DTracer depatch(json x) {
-        addTrace(key, "depatch", {x});
-        return *this;
-    }
-
-    Array1DTracer select(json x) {
-        addTrace(key, "select", {x});
-        return *this;
-    }
-
-    Array1DTracer select(json sx, json ex) {
-        addTrace(key, "select", {sx, ex});
-        return *this;
-    }
-
-    Array1DTracer deselect(json x) {
-        addTrace(key, "deselect", {x});
-        return *this;
-    }
-
-    Array1DTracer deselect(json sx, json ex) {
-        addTrace(key, "deselect", {sx, ex});
-        return *this;
-    }
-
-    Array1DTracer chart(ChartTracer chartTracer) {
-        addTrace(key, "chart", {chartTracer.key});
-        return *this;
+    void chart(const ChartTracer &chartTracer) {
+        command("chart", {chartTracer.key});
     }
 };
 

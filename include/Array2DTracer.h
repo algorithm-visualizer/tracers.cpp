@@ -5,77 +5,55 @@
 
 class Array2DTracer : public Tracer {
 public:
-    Array2DTracer(string title = "") : Tracer("Array2DTracer", title) {
+    Array2DTracer(const string &title = "", const string &className = "Array2DTracer") : Tracer(title, className) {
     }
 
-    Array2DTracer set(json array2d) {
-        addTrace(key, "set", {array2d});
-        return *this;
+    void set(const json &array2d) {
+        command("set", {array2d});
     }
 
-    Array2DTracer set() {
-        addTrace(key, "set", {});
-        return *this;
+    void patch(int x, int y, const json &v) {
+        command("patch", {x, y, v});
     }
 
-    Array2DTracer reset() {
-        addTrace(key, "reset", {});
-        return *this;
+    void patch(int x, int y) {
+        command("patch", {x, y});
     }
 
-    Array2DTracer delay() {
-        addTrace(key, "delay", {});
-        return *this;
+    void depatch(int x, int y) {
+        command("depatch", {x, y});
     }
 
-    Array2DTracer patch(json x, json y, json v) {
-        addTrace(key, "patch", {x, y, v});
-        return *this;
+    void select(int sx, int sy, int ex, int ey) {
+        command("select", {sx, sy, ex, ey});
     }
 
-    Array2DTracer depatch(json x, json y) {
-        addTrace(key, "depatch", {x, y});
-        return *this;
+    void select(int x, int y) {
+        command("select", {x, y});
     }
 
-    Array2DTracer select(json x, json y) {
-        addTrace(key, "select", {x, y});
-        return *this;
+    void selectRow(int x, int sy, int ey) {
+        command("selectRow", {x, sy, ey});
     }
 
-    Array2DTracer select(json sx, json sy, json ex, json ey) {
-        addTrace(key, "select", {sx, sy, ex, ey});
-        return *this;
+    void selectCol(int y, int sx, int ex) {
+        command("selectCol", {y, sx, ex});
     }
 
-    Array2DTracer selectRow(json x, json sy, json ey) {
-        addTrace(key, "selectRow", {x, sy, ey});
-        return *this;
+    void deselect(int sx, int sy, int ex, int ey) {
+        command("deselect", {sx, sy, ex, ey});
     }
 
-    Array2DTracer selectCol(json y, json sx, json ex) {
-        addTrace(key, "selectCol", {y, sx, ex});
-        return *this;
+    void deselect(int x, int y) {
+        command("deselect", {x, y});
     }
 
-    Array2DTracer deselect(json x, json y) {
-        addTrace(key, "deselect", {x, y});
-        return *this;
+    void deselectRow(int x, int sy, int ey) {
+        command("deselectRow", {x, sy, ey});
     }
 
-    Array2DTracer deselect(json sx, json sy, json ex, json ey) {
-        addTrace(key, "deselect", {sx, sy, ex, ey});
-        return *this;
-    }
-
-    Array2DTracer deselectRow(json x, json sy, json ey) {
-        addTrace(key, "deselectRow", {x, sy, ey});
-        return *this;
-    }
-
-    Array2DTracer deselectCol(json y, json sx, json ex) {
-        addTrace(key, "deselectCol", {y, sx, ex});
-        return *this;
+    void deselectCol(int y, int sx, int ex) {
+        command("deselectCol", {y, sx, ex});
     }
 };
 

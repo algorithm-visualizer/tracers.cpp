@@ -6,237 +6,188 @@
 
 class GraphTracer : public Tracer {
 public:
-    GraphTracer(string title = "") : Tracer("GraphTracer", title) {
+    GraphTracer(const string &title = "", const string &className = "GraphTracer") : Tracer(title, className) {
     }
 
-    GraphTracer set(json array2d) {
-        addTrace(key, "set", {array2d});
-        return *this;
+    void set(const json &array2d) {
+        command("set", {array2d});
     }
 
-    GraphTracer set() {
-        addTrace(key, "set", {});
-        return *this;
-    }
-
-    GraphTracer reset() {
-        addTrace(key, "reset", {});
-        return *this;
-    }
-
-    GraphTracer delay() {
-        addTrace(key, "delay", {});
-        return *this;
-    }
-
-    GraphTracer directed(json isDirected) {
-        addTrace(key, "directed", {isDirected});
+    GraphTracer directed(bool isDirected) {
+        command("directed", {isDirected});
         return *this;
     }
 
     GraphTracer directed() {
-        addTrace(key, "directed", {});
+        command("directed", {});
         return *this;
     }
 
-    GraphTracer weighted(json isWeighted) {
-        addTrace(key, "weighted", {isWeighted});
+    GraphTracer weighted(bool isWeighted) {
+        command("weighted", {isWeighted});
         return *this;
     }
 
     GraphTracer weighted() {
-        addTrace(key, "weighted", {});
-        return *this;
-    }
-
-    GraphTracer addNode(json id, json weight, json x, json y, json visitedCount, json selectedCount) {
-        addTrace(key, "addNode", {id, weight, x, y, visitedCount, selectedCount});
-        return *this;
-    }
-
-    GraphTracer addNode(json id, json weight, json x, json y, json visitedCount) {
-        addTrace(key, "addNode", {id, weight, x, y, visitedCount});
-        return *this;
-    }
-
-    GraphTracer addNode(json id, json weight, json x, json y) {
-        addTrace(key, "addNode", {id, weight, x, y});
-        return *this;
-    }
-
-    GraphTracer addNode(json id, json weight, json x) {
-        addTrace(key, "addNode", {id, weight, x});
-        return *this;
-    }
-
-    GraphTracer addNode(json id, json weight) {
-        addTrace(key, "addNode", {id, weight});
-        return *this;
-    }
-
-    GraphTracer addNode(json id) {
-        addTrace(key, "addNode", {id});
-        return *this;
-    }
-
-    GraphTracer updateNode(json id, json weight, json x, json y, json visitedCount, json selectedCount) {
-        addTrace(key, "updateNode", {id, weight, x, y, visitedCount, selectedCount});
-        return *this;
-    }
-
-    GraphTracer updateNode(json id, json weight, json x, json y, json visitedCount) {
-        addTrace(key, "updateNode", {id, weight, x, y, visitedCount});
-        return *this;
-    }
-
-    GraphTracer updateNode(json id, json weight, json x, json y) {
-        addTrace(key, "updateNode", {id, weight, x, y});
-        return *this;
-    }
-
-    GraphTracer updateNode(json id, json weight, json x) {
-        addTrace(key, "updateNode", {id, weight, x});
-        return *this;
-    }
-
-    GraphTracer updateNode(json id, json weight) {
-        addTrace(key, "updateNode", {id, weight});
-        return *this;
-    }
-
-    GraphTracer updateNode(json id) {
-        addTrace(key, "updateNode", {id});
-        return *this;
-    }
-
-    GraphTracer removeNode(json id) {
-        addTrace(key, "removeNode", {id});
-        return *this;
-    }
-
-    GraphTracer addEdge(json source, json target, json weight, json visitedCount, json selectedCount) {
-        addTrace(key, "addEdge", {source, target, weight, visitedCount, selectedCount});
-        return *this;
-    }
-
-    GraphTracer addEdge(json source, json target, json weight, json visitedCount) {
-        addTrace(key, "addEdge", {source, target, weight, visitedCount});
-        return *this;
-    }
-
-    GraphTracer addEdge(json source, json target, json weight) {
-        addTrace(key, "addEdge", {source, target, weight});
-        return *this;
-    }
-
-    GraphTracer addEdge(json source, json target) {
-        addTrace(key, "addEdge", {source, target});
-        return *this;
-    }
-
-    GraphTracer updateEdge(json source, json target, json weight, json visitedCount, json selectedCount) {
-        addTrace(key, "updateEdge", {source, target, weight, visitedCount, selectedCount});
-        return *this;
-    }
-
-    GraphTracer updateEdge(json source, json target, json weight, json visitedCount) {
-        addTrace(key, "updateEdge", {source, target, weight, visitedCount});
-        return *this;
-    }
-
-    GraphTracer updateEdge(json source, json target, json weight) {
-        addTrace(key, "updateEdge", {source, target, weight});
-        return *this;
-    }
-
-    GraphTracer updateEdge(json source, json target) {
-        addTrace(key, "updateEdge", {source, target});
-        return *this;
-    }
-
-    GraphTracer removeEdge(json source, json target) {
-        addTrace(key, "removeEdge", {source, target});
+        command("weighted", {});
         return *this;
     }
 
     GraphTracer layoutCircle() {
-        addTrace(key, "layoutCircle", {});
+        command("layoutCircle", {});
         return *this;
     }
 
-    GraphTracer layoutTree(json root, json sorted) {
-        addTrace(key, "layoutTree", {root, sorted});
+    GraphTracer layoutTree(const json &root, bool sorted) {
+        command("layoutTree", {root, sorted});
         return *this;
     }
 
-    GraphTracer layoutTree(json root) {
-        addTrace(key, "layoutTree", {root});
+    GraphTracer layoutTree(const json &root) {
+        command("layoutTree", {root});
         return *this;
     }
 
     GraphTracer layoutTree() {
-        addTrace(key, "layoutTree", {});
+        command("layoutTree", {});
         return *this;
     }
 
     GraphTracer layoutRandom() {
-        addTrace(key, "layoutRandom", {});
+        command("layoutRandom", {});
         return *this;
     }
 
-    GraphTracer visit(json target, json source, json weight) {
-        addTrace(key, "visit", {target, source, weight});
-        return *this;
+    void addNode(const json &id, double weight, double x, double y, int visitedCount, int selectedCount) {
+        command("addNode", {id, weight, x, y, visitedCount, selectedCount});
     }
 
-    GraphTracer visit(json target, json source) {
-        addTrace(key, "visit", {target, source});
-        return *this;
+    void addNode(const json &id, double weight, double x, double y, int visitedCount) {
+        command("addNode", {id, weight, x, y, visitedCount});
     }
 
-    GraphTracer visit(json target) {
-        addTrace(key, "visit", {target});
-        return *this;
+    void addNode(const json &id, double weight, double x, double y) {
+        command("addNode", {id, weight, x, y});
     }
 
-    GraphTracer leave(json target, json source, json weight) {
-        addTrace(key, "leave", {target, source, weight});
-        return *this;
+    void addNode(const json &id, double weight, double x) {
+        command("addNode", {id, weight, x});
     }
 
-    GraphTracer leave(json target, json source) {
-        addTrace(key, "leave", {target, source});
-        return *this;
+    void addNode(const json &id, double weight) {
+        command("addNode", {id, weight});
     }
 
-    GraphTracer leave(json target) {
-        addTrace(key, "leave", {target});
-        return *this;
+    void addNode(const json &id) {
+        command("addNode", {id});
     }
 
-    GraphTracer select(json target, json source) {
-        addTrace(key, "select", {target, source});
-        return *this;
+    void updateNode(const json &id, double weight, double x, double y, int visitedCount, int selectedCount) {
+        command("updateNode", {id, weight, x, y, visitedCount, selectedCount});
     }
 
-    GraphTracer select(json target) {
-        addTrace(key, "select", {target});
-        return *this;
+    void updateNode(const json &id, double weight, double x, double y, int visitedCount) {
+        command("updateNode", {id, weight, x, y, visitedCount});
     }
 
-    GraphTracer deselect(json target, json source) {
-        addTrace(key, "deselect", {target, source});
-        return *this;
+    void updateNode(const json &id, double weight, double x, double y) {
+        command("updateNode", {id, weight, x, y});
     }
 
-    GraphTracer deselect(json target) {
-        addTrace(key, "deselect", {target});
-        return *this;
+    void updateNode(const json &id, double weight, double x) {
+        command("updateNode", {id, weight, x});
     }
 
-    GraphTracer log(LogTracer logTracer) {
-        addTrace(key, "log", {logTracer.key});
-        return *this;
+    void updateNode(const json &id, double weight) {
+        command("updateNode", {id, weight});
+    }
+
+    void updateNode(const json &id) {
+        command("updateNode", {id});
+    }
+
+    void removeNode(const json &id) {
+        command("removeNode", {id});
+    }
+
+    void addEdge(const json &source, const json &target, double weight, int visitedCount, int selectedCount) {
+        command("addEdge", {source, target, weight, visitedCount, selectedCount});
+    }
+
+    void addEdge(const json &source, const json &target, double weight, int visitedCount) {
+        command("addEdge", {source, target, weight, visitedCount});
+    }
+
+    void addEdge(const json &source, const json &target, double weight) {
+        command("addEdge", {source, target, weight});
+    }
+
+    void addEdge(const json &source, const json &target) {
+        command("addEdge", {source, target});
+    }
+
+    void updateEdge(const json &source, const json &target, double weight, int visitedCount, int selectedCount) {
+        command("updateEdge", {source, target, weight, visitedCount, selectedCount});
+    }
+
+    void updateEdge(const json &source, const json &target, double weight, int visitedCount) {
+        command("updateEdge", {source, target, weight, visitedCount});
+    }
+
+    void updateEdge(const json &source, const json &target, double weight) {
+        command("updateEdge", {source, target, weight});
+    }
+
+    void updateEdge(const json &source, const json &target) {
+        command("updateEdge", {source, target});
+    }
+
+    void removeEdge(const json &source, const json &target) {
+        command("removeEdge", {source, target});
+    }
+
+    void visit(const json &target, const json &source, double weight) {
+        command("visit", {target, source, weight});
+    }
+
+    void visit(const json &target, const json &source) {
+        command("visit", {target, source});
+    }
+
+    void visit(const json &target) {
+        command("visit", {target});
+    }
+
+    void leave(const json &target, const json &source, double weight) {
+        command("leave", {target, source, weight});
+    }
+
+    void leave(const json &target, const json &source) {
+        command("leave", {target, source});
+    }
+
+    void leave(const json &target) {
+        command("leave", {target});
+    }
+
+    void select(const json &target, const json &source) {
+        command("select", {target, source});
+    }
+
+    void select(const json &target) {
+        command("select", {target});
+    }
+
+    void deselect(const json &target, const json &source) {
+        command("deselect", {target, source});
+    }
+
+    void deselect(const json &target) {
+        command("deselect", {target});
+    }
+
+    void log(LogTracer &logTracer) {
+        command("log", {logTracer.key});
     }
 };
 
