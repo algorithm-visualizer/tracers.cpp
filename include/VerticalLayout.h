@@ -1,5 +1,5 @@
-#ifndef CPP_VERTICALLAYOUT_H
-#define CPP_VERTICALLAYOUT_H
+#ifndef VERTICALLAYOUT_H
+#define VERTICALLAYOUT_H
 
 #include "Layout.h"
 

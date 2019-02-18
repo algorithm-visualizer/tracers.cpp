@@ -1,14 +1,6 @@
 #include <string>
 #include <iostream>
-#include <VerticalLayout.h>
-#include <HorizontalLayout.h>
-#include "Array1DTracer.h"
-#include "Array2DTracer.h"
-#include "ChartTracer.h"
-#include "Tracer.h"
-#include "LogTracer.h"
-#include "GraphTracer.h"
-#include "Randomize.h"
+#include "algorithm-visualizer.h"
 
 #define N 5
 

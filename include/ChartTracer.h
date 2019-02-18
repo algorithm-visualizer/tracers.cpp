@@ -1,5 +1,5 @@
-#ifndef CPP_CHARTTRACER_H
-#define CPP_CHARTTRACER_H
+#ifndef CHARTTRACER_H
+#define CHARTTRACER_H
 
 #include "Array1DTracer.h"
 

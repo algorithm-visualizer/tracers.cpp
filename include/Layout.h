@@ -1,5 +1,5 @@
-#ifndef CPP_LAYOUT_H
-#define CPP_LAYOUT_H
+#ifndef LAYOUT_H
+#define LAYOUT_H
 
 #include "Commander.h"
 

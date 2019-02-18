@@ -1,5 +1,5 @@
-#ifndef CPP_GRAPHTRACER_H
-#define CPP_GRAPHTRACER_H
+#ifndef GRAPHTRACER_H
+#define GRAPHTRACER_H
 
 #include "Tracer.h"
 #include "LogTracer.h"

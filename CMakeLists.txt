@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(algorithm-visualizer VERSION 2.3.3)
+project(algorithm-visualizer VERSION 2.3.4)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -8,5 +8,8 @@ include_directories(include)
 install(DIRECTORY include/
         DESTINATION include/${PROJECT_NAME}
         FILES_MATCHING PATTERN "*.h*")
+
+install(FILES algorithm-visualizer.h
+        DESTINATION include)
 
 add_subdirectory(test)

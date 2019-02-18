@@ -1,5 +1,5 @@
-#ifndef CPP_RANDOMIZE_H
-#define CPP_RANDOMIZE_H
+#ifndef RANDOMIZE_H
+#define RANDOMIZE_H
 
 #include <random>
 #include <algorithm>

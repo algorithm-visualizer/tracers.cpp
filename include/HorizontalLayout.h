@@ -1,5 +1,5 @@
-#ifndef CPP_HORIZONTALLAYOUT_H
-#define CPP_HORIZONTALLAYOUT_H
+#ifndef HORIZONTALLAYOUT_H
+#define HORIZONTALLAYOUT_H
 
 #include "Layout.h"
 

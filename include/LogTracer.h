@@ -1,5 +1,5 @@
-#ifndef CPP_LOGTRACER_H
-#define CPP_LOGTRACER_H
+#ifndef LOGTRACER_H
+#define LOGTRACER_H
 
 #include <stdarg.h>
 #include "Tracer.h"

@@ -1,5 +1,5 @@
-#ifndef CPP_COMMANDER_H
-#define CPP_COMMANDER_H
+#ifndef COMMANDER_H
+#define COMMANDER_H
 
 #include <string>
 #include <cstdlib>

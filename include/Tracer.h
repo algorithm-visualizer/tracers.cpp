@@ -1,5 +1,5 @@
-#ifndef CPP_TRACER_H
-#define CPP_TRACER_H
+#ifndef TRACER_H
+#define TRACER_H
 
 #include "Commander.h"
 
