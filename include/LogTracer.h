@@ -1,7 +1,6 @@
 #ifndef CPP_LOGTRACER_H
 #define CPP_LOGTRACER_H
 
-#include <regex>
 #include <stdarg.h>
 #include "Tracer.h"
 
@@ -22,46 +21,51 @@ public:
         command("println", {message});
     }
 
-    void printf(const string format, ...) {
+    void printf(const char *format, ...) {
         arguments traceArgs = {format};
 
         va_list args;
         va_start(args, format);
-        string::const_iterator searchStart(format.cbegin());
-        const std::regex exp(
-                R"RAW((?:[^\x25]|^)(?:\x25{2})*\x25(?:([1-9]\d*)\$|\(([^)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-gijostTuvxX]))RAW");
-        std::smatch match;
-        while (std::regex_search(searchStart, format.cend(), match, exp)) {
-            char specifier = match.str(8).at(0);
-            switch (specifier) {
-                case 'b':
-                case 'c':
-                case 'd':
-                case 'i':
-                case 'u':
-                case 'o':
-                case 't':
-                case 'x':
-                case 'X':
-                    traceArgs.push_back(va_arg(args, int));
-                    break;
-                case 'e':
-                case 'f':
-                case 'g':
-                    traceArgs.push_back(va_arg(args, double));
-                    break;
-                case 's':
-                    traceArgs.push_back(va_arg(args, char *));
-                    break;
-                case 'T':
-                case 'v':
-                case 'j':
-                    throw std::invalid_argument("Format Not Supported");
-                default:
-                    break;
+
+        bool percent = false;
+        while (*format != '\0') {
+            if (*format == '%') {
+                percent = !percent;
+            } else if (percent) {
+                switch (*format) {
+                    case 'b':
+                    case 'c':
+                    case 'd':
+                    case 'i':
+                    case 'u':
+                    case 'o':
+                    case 't':
+                    case 'x':
+                    case 'X':
+                        percent = false;
+                        traceArgs.push_back(va_arg(args, int));
+                        break;
+                    case 'e':
+                    case 'f':
+                    case 'g':
+                        percent = false;
+                        traceArgs.push_back(va_arg(args, double));
+                        break;
+                    case 's':
+                        percent = false;
+                        traceArgs.push_back(va_arg(args, char *));
+                        break;
+                    case 'T':
+                    case 'v':
+                    case 'j':
+                        throw std::invalid_argument("Format Not Supported");
+                    default:
+                        break;
+                }
             }
-            searchStart = match.suffix().first;
+            format++;
         }
+
         va_end(args);
 
         command("printf", traceArgs);
