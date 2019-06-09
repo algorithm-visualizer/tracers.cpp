@@ -1,8 +1,9 @@
 # tracers.cpp
 
-> `tracers.cpp` is a visualization library for C++.
+> This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
 
-This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
+`tracers.cpp` is a visualization library for C++.
+You can use it on [algorithm-visualizer.org](https://algorithm-visualizer.org/) or locally on your machine.
 
 ## Dependencies
 
