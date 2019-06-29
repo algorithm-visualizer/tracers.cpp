@@ -1,4 +1,4 @@
-# tracers.cpp
+# tracers.cpp [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.cpp.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.cpp)
 
 > `tracers.cpp` is a visualization library for C++.
 
