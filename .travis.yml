@@ -1,0 +1,43 @@
+language: cpp
+compiler:
+  - gcc
+addons:
+  apt:
+    packages:
+      - doxygen
+before_script:
+  - mkdir build
+  - cd build
+  - cmake ..
+script:
+  - make
+  - make test
+  - cd ..
+  - doxygen Doxyfile
+deploy:
+  # Publish Doxygen to GitHub Pages
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_ACCESS_TOKEN
+    local_dir: docs/html
+    keep_history: true
+    on:
+      tags: true
+
+  # Create a GitHub release
+  - provider: releases
+    api_key: $GITHUB_ACCESS_TOKEN
+    on:
+      tags: true
+
+  # Trigger Travis CI to deploy `extractor.cpp`
+  - provider: script
+    script: .travis/extractor.sh $TRAVIS_ACCESS_TOKEN
+    on:
+      tags: true
+env:
+  global:
+    # GITHUB_ACCESS_TOKEN
+    - secure: QhcdUIQkleuwpAH8N85I1OcKZIXY0VLQCoE5hXu+SMBKNKXK8atefgf0AyYJU0JRCen8jbq52XWqxacaE0Bv0vHhE5CiIHWK/Twkpe2bQrjV3wYnJ/+nHnzTCOw0AQzZdT9skeIrkNdnVdfJXaTaRkHFnqYaINfh+wr/SC2QOerOjdDda/DqyIHypO648KKYgTBuQQ5nXDSLMYrUCF4Siax+af4rc2C2C2ZUWC8G4q+bUlTRDUp/EKDiq5TVfV1KCbiJzO4mjiaWy97eRDNMnFrdh8cFZxazvYWWyisiTcaOGUz78PB25x0Is45axncScBhs8qSY6mQIxbb8KI5X/UxXVSF/p0sSnaqR0TYy8zgCIXU+HXaUr7MoyMBje2DGGYhJs5CvxdOcQHBEaazIbUucM4nGBm15uX9fxzvM1SWv6C+csNjkJRNd3G3/nt3egCwI4SNAz98Ei2UW8TXXdlXtEM4QiH/AGWxHxgZo6sOIZi6uREHE1OnZygS59H7bIdditRlNBDxAtBiNVDV/vK15KrMvO1VhG8XoF/Qz6VdySGfmVWg3x9A4F2UwlLXSbGWym526n9caPS4FykTuh9GbZXvATy4hweN9+VtGeD+K4ZaLjkfaCCpG0BnnHH91k4zIXALpWUL5tVNHMutiuouSExgBrSHIMsuXmNt2Zzc=
+    # TRAVIS_ACCESS_TOKEN
+    - secure: As4J8URDuFqgkto2gbCUYzwPFjActoPt0kUP252DYO7MYlTNyZCRPyGjmcGqTgKYj8pc2gOpd2kJ93Vvgdosy/dtxFmqf7RrLyQgCjpPqokWWrPPImEVLGQ0cHmjDesi67zxjefafo+1smF9G6Pt25+rlybLVFqBsl03FlwJ67+44okVPE80NKHJAbZ4LQeiZcBhwBqUQea2JFulQKK7l+PmgN2BBGIbE6DTmVU+XuR8fWgBdNBDqjCnO7Q/LH5ary4+3EA1UsuosWs+qqtLuixqucbSKIXtyMWbs8F8T15iY04EGlfnAIZ8LVzmFKeYiEVQw6kgxkO2zqFSRdcNlyaOWHBUAbXNSsO5Otn02vMuKp43ILCJ3chvFVseu7z//78eYi/aGJgOITIuILmXMzvma1pyRpWVrCBO3+oOtrA5/G8QoHegb7FFt0TYRZHy692wnZ2UIEOlxroEzKIErpenYjbPSnfii7cQPiE2aK2spLwG5ehGNxGkMKxhTIF8V+pYc1zlHIuvKAmgDuv6+AxpHPUSWjg+bfQnHhruix7FLPNNZbxCNB0R+YG1+u+cfaJtWk8BtF5FlFpIcjk8oJkkTKAmcG9Oz5uEUWSt4vrdz8PtjuPozqAbSVJt5gOBIK2OryJD1zA9oWEslHHrzgvQKlKOGphfwzU5zXjYN68=

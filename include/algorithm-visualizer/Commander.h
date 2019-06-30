@@ -4,8 +4,8 @@
 #include <string>
 #include <cstdlib>
 #include <fstream>
-#include <nlohmann/json.hpp>
 #include <curl/curl.h>
+#include "nlohmann/json.hpp"
 #include "Randomize.h"
 
 #define MAX_COMMANDS 1000000
