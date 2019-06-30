@@ -4,9 +4,7 @@
 
 This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
 
-## Dependencies
-
-- [nlohmann/json](https://github.com/nlohmann/json)
+## Prerequisites
 
 - [libcurl](https://curl.haxx.se/libcurl/)
 
