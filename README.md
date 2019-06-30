@@ -1,4 +1,4 @@
-# tracers.cpp [![API reference](https://img.shields.io/badge/documentation-cpp-red.svg?style=flat-square)](https://algorithm-visualizer.github.io/tracers.cpp/) [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.cpp.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.cpp)
+# tracers.cpp [![GitHub release](https://img.shields.io/github/release/algorithm-visualizer/tracers.cpp.svg?style=flat-square)](https://github.com/algorithm-visualizer/tracers.cpp/releases/latest) [![API reference](https://img.shields.io/badge/documentation-cpp-red.svg?style=flat-square)](https://algorithm-visualizer.github.io/tracers.cpp/) [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.cpp.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.cpp)
 
 > This repository is part of the project [Algorithm Visualizer](https://github.com/algorithm-visualizer).
 
