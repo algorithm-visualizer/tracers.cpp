@@ -1,6 +1,10 @@
 language: cpp
 compiler:
   - gcc
+addons:
+  apt:
+    packages:
+      - doxygen
 before_script:
   - mkdir build
   - cd build
@@ -8,27 +12,29 @@ before_script:
 script:
   - make
   - make test
+  - cd ..
+  - doxygen Doxyfile
 deploy:
-#  # Publish DevDocs to GitHub Pages
-#  - provider: pages
-#    skip_cleanup: true
-#    github_token: $GITHUB_ACCESS_TOKEN
-#    local_dir: build/docs
-#    keep_history: true
-#    on:
-#      tags: true
-#
-#  # Create a GitHub release
-#  - provider: releases
-#    api_key: $GITHUB_ACCESS_TOKEN
-#    on:
-#      tags: true
-#
-#  # Trigger Travis CI to deploy `extractor.cpp`
-#  - provider: script
-#    script: .travis/extractor.sh $TRAVIS_ACCESS_TOKEN
-#    on:
-#      tags: true
+  # Publish Doxygen to GitHub Pages
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_ACCESS_TOKEN
+    local_dir: docs/html
+    keep_history: true
+    on:
+      tags: true
+
+  # Create a GitHub release
+  - provider: releases
+    api_key: $GITHUB_ACCESS_TOKEN
+    on:
+      tags: true
+
+  # Trigger Travis CI to deploy `extractor.cpp`
+  - provider: script
+    script: .travis/extractor.sh $TRAVIS_ACCESS_TOKEN
+    on:
+      tags: true
 env:
   global:
     # GITHUB_ACCESS_TOKEN

@@ -1,4 +1,4 @@
-# tracers.cpp [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.cpp.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.cpp)
+# tracers.cpp [![API reference](https://img.shields.io/badge/documentation-cpp-red.svg?style=flat-square)](https://algorithm-visualizer.github.io/tracers.cpp/) [![Travis (.com)](https://img.shields.io/travis/com/algorithm-visualizer/tracers.cpp.svg?style=flat-square)](https://travis-ci.com/algorithm-visualizer/tracers.cpp)
 
 > `tracers.cpp` is a visualization library for C++.
 
@@ -40,7 +40,7 @@ int main() {
 }
 ```
 
-Check out the [API reference](https://github.com/algorithm-visualizer/algorithm-visualizer/wiki) for more information.
+Check out the [API reference](https://algorithm-visualizer.github.io/tracers.cpp/) for more information.
 
 ## Contributing
 
